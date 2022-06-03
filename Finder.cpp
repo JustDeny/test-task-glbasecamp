@@ -24,8 +24,6 @@ void Finder::traverseDirs(const fs::path &path_to_dir) {
                 if(found)
                 {
                     complete_searching = true;
-                    m_root_path = entry.path();
-                    std::cout << m_root_path << std::endl;
                     break;
                 }
             }
@@ -43,6 +41,7 @@ void Finder::traverseDirs(const fs::path &path_to_dir) {
                 {
                     found = true;
                     m_found_path = entry.path();
+                    std::cout << m_found_path << std::endl;
                 }
             }
         }
@@ -69,6 +68,7 @@ void Finder::multiThreadTraverseDirs(const fs::path &root) {
         if(entry.exists() && entry.is_regular_file() && entry.path().filename() == m_target)
         {
             found = true;
+            std::cout << entry.path() << std::endl;
         }
         else if(entry.is_directory()) {
             if (available_threads > 1) {
@@ -86,8 +86,7 @@ void Finder::multiThreadTraverseDirs(const fs::path &root) {
             }
             else if(found)
             {
-                m_root_path = entry.path();
-                std::cout << m_root_path << std::endl;
+                m_found_path = entry.path();
                 complete_searching = true;
                 break;
             }
