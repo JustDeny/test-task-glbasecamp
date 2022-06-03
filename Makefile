@@ -6,7 +6,7 @@ Finder.o:
 	g++ -std=c++17 -c Finder.cpp -o Finder.o
 
 clean:
-	-rm -f finder.lib
+	-rm -f finder.lib Finder.o
 	del finder.lib Finder.o
 	
 
